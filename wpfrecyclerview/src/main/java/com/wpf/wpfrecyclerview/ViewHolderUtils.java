@@ -32,10 +32,7 @@ public class ViewHolderUtils {
     public static void setData(final WPFViewHolder viewHolder, WPFLayoutData<?> layoutData) {
         if(layoutData == null) return;
         setData(viewHolder,layoutData.getData());
-        if(layoutData.getViewDataList() == null
-                || layoutData.getViewDataList().isEmpty()) return;
         View view = viewHolder.itemView;
-
         if(layoutData.isCanClick()) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -52,6 +49,8 @@ public class ViewHolderUtils {
                 }
             });
         }
+        if(layoutData.getViewDataList() == null
+                || layoutData.getViewDataList().isEmpty()) return;
 
         for(WPFViewData viewData : layoutData.getViewDataList()) {
             View viewById = view.findViewById(viewData.getViewId());
